@@ -1,0 +1,6 @@
+framework module Pods_ChefNote {
+  umbrella header "Pods-ChefNote-umbrella.h"
+
+  export *
+  module * { export * }
+}

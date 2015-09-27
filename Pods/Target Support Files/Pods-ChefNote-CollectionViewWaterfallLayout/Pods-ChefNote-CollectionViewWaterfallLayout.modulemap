@@ -1,0 +1,6 @@
+framework module CollectionViewWaterfallLayout {
+  umbrella header "Pods-ChefNote-CollectionViewWaterfallLayout-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,12 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8BA8F39AFFA5B74C6FDA3B57 /* Pods_ChefNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E44A0794C189DCE6FA56434 /* Pods_ChefNote.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9669A6921BB5086900725241 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6911BB5086900725241 /* AppDelegate.swift */; };
-		9669A6941BB5086900725241 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6931BB5086900725241 /* ViewController.swift */; };
-		9669A6971BB5086900725241 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9669A6951BB5086900725241 /* Main.storyboard */; };
 		9669A6991BB5086900725241 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9669A6981BB5086900725241 /* Images.xcassets */; };
 		9669A69C1BB5086900725241 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9669A69A1BB5086900725241 /* LaunchScreen.xib */; };
 		9669A6A81BB5086900725241 /* ChefNoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6A71BB5086900725241 /* ChefNoteTests.swift */; };
+		9669A6B21BB510DF00725241 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9669A6B11BB510DF00725241 /* Main.storyboard */; };
+		9669A6C11BB510F400725241 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6B31BB510F400725241 /* DiscoverViewController.swift */; };
+		9669A6C21BB510F400725241 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6B41BB510F400725241 /* MoreViewController.swift */; };
+		9669A6C31BB510F400725241 /* NewMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6B51BB510F400725241 /* NewMemberViewController.swift */; };
+		9669A6C41BB510F400725241 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6B61BB510F400725241 /* LoginViewController.swift */; };
+		9669A6C51BB510F400725241 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6B71BB510F400725241 /* ContainerViewController.swift */; };
+		9669A6C61BB510F400725241 /* EmptySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6B81BB510F400725241 /* EmptySegue.swift */; };
+		9669A6C71BB510F400725241 /* SavedRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6B91BB510F400725241 /* SavedRecipesViewController.swift */; };
+		9669A6C81BB510F400725241 /* DiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6BA1BB510F400725241 /* DiscoverCollectionViewCell.swift */; };
+		9669A6C91BB510F400725241 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6BB1BB510F400725241 /* ImageViewExtension.swift */; };
+		9669A6CA1BB510F400725241 /* RecipeDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6BC1BB510F400725241 /* RecipeDetailTableViewController.swift */; };
+		9669A6CB1BB510F400725241 /* ImageCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6BD1BB510F400725241 /* ImageCardTableViewCell.swift */; };
+		9669A6CC1BB510F400725241 /* IngredientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6BE1BB510F400725241 /* IngredientsTableViewCell.swift */; };
+		9669A6CD1BB510F400725241 /* DirectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6BF1BB510F400725241 /* DirectionsTableViewCell.swift */; };
+		9669A6CE1BB510F400725241 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9669A6C01BB510F400725241 /* Image.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +40,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D4413C303C563824F8FDC22 /* Pods-ChefNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChefNote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChefNote/Pods-ChefNote.debug.xcconfig"; sourceTree = "<group>"; };
+		5E44A0794C189DCE6FA56434 /* Pods_ChefNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChefNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9669A68C1BB5086900725241 /* ChefNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChefNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9669A6901BB5086900725241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9669A6911BB5086900725241 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9669A6931BB5086900725241 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9669A6961BB5086900725241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9669A6981BB5086900725241 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9669A69B1BB5086900725241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9669A6A11BB5086900725241 /* ChefNoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChefNoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9669A6A61BB5086900725241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9669A6A71BB5086900725241 /* ChefNoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefNoteTests.swift; sourceTree = "<group>"; };
+		9669A6B11BB510DF00725241 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		9669A6B31BB510F400725241 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		9669A6B41BB510F400725241 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		9669A6B51BB510F400725241 /* NewMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMemberViewController.swift; sourceTree = "<group>"; };
+		9669A6B61BB510F400725241 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9669A6B71BB510F400725241 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		9669A6B81BB510F400725241 /* EmptySegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptySegue.swift; sourceTree = "<group>"; };
+		9669A6B91BB510F400725241 /* SavedRecipesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedRecipesViewController.swift; sourceTree = "<group>"; };
+		9669A6BA1BB510F400725241 /* DiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
+		9669A6BB1BB510F400725241 /* ImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
+		9669A6BC1BB510F400725241 /* RecipeDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetailTableViewController.swift; sourceTree = "<group>"; };
+		9669A6BD1BB510F400725241 /* ImageCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCardTableViewCell.swift; sourceTree = "<group>"; };
+		9669A6BE1BB510F400725241 /* IngredientsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewCell.swift; sourceTree = "<group>"; };
+		9669A6BF1BB510F400725241 /* DirectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsTableViewCell.swift; sourceTree = "<group>"; };
+		9669A6C01BB510F400725241 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
+		C5B0232EDA88D121FA56149D /* Pods-ChefNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChefNote.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChefNote/Pods-ChefNote.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BA8F39AFFA5B74C6FDA3B57 /* Pods_ChefNote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +87,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7688E41F7323EC27EABB89E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5D4413C303C563824F8FDC22 /* Pods-ChefNote.debug.xcconfig */,
+				C5B0232EDA88D121FA56149D /* Pods-ChefNote.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9669A6831BB5086900725241 = {
 			isa = PBXGroup;
 			children = (
 				9669A68E1BB5086900725241 /* ChefNote */,
 				9669A6A41BB5086900725241 /* ChefNoteTests */,
 				9669A68D1BB5086900725241 /* Products */,
+				7688E41F7323EC27EABB89E8 /* Pods */,
+				E7358DD9AC9BF9C29679426A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,9 +119,22 @@
 		9669A68E1BB5086900725241 /* ChefNote */ = {
 			isa = PBXGroup;
 			children = (
+				9669A6B31BB510F400725241 /* DiscoverViewController.swift */,
+				9669A6B41BB510F400725241 /* MoreViewController.swift */,
+				9669A6B51BB510F400725241 /* NewMemberViewController.swift */,
+				9669A6B61BB510F400725241 /* LoginViewController.swift */,
+				9669A6B71BB510F400725241 /* ContainerViewController.swift */,
+				9669A6B81BB510F400725241 /* EmptySegue.swift */,
+				9669A6B91BB510F400725241 /* SavedRecipesViewController.swift */,
+				9669A6BA1BB510F400725241 /* DiscoverCollectionViewCell.swift */,
+				9669A6BB1BB510F400725241 /* ImageViewExtension.swift */,
+				9669A6BC1BB510F400725241 /* RecipeDetailTableViewController.swift */,
+				9669A6BD1BB510F400725241 /* ImageCardTableViewCell.swift */,
+				9669A6BE1BB510F400725241 /* IngredientsTableViewCell.swift */,
+				9669A6BF1BB510F400725241 /* DirectionsTableViewCell.swift */,
+				9669A6C01BB510F400725241 /* Image.xcassets */,
 				9669A6911BB5086900725241 /* AppDelegate.swift */,
-				9669A6931BB5086900725241 /* ViewController.swift */,
-				9669A6951BB5086900725241 /* Main.storyboard */,
+				9669A6B11BB510DF00725241 /* Main.storyboard */,
 				9669A6981BB5086900725241 /* Images.xcassets */,
 				9669A69A1BB5086900725241 /* LaunchScreen.xib */,
 				9669A68F1BB5086900725241 /* Supporting Files */,
@@ -112,6 +167,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E7358DD9AC9BF9C29679426A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E44A0794C189DCE6FA56434 /* Pods_ChefNote.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +182,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9669A6AB1BB5086900725241 /* Build configuration list for PBXNativeTarget "ChefNote" */;
 			buildPhases = (
+				E676C9705708B91F752A4B3B /* Check Pods Manifest.lock */,
 				9669A6881BB5086900725241 /* Sources */,
 				9669A6891BB5086900725241 /* Frameworks */,
 				9669A68A1BB5086900725241 /* Resources */,
+				05E5EBFEF4504C57BD7D690A /* Embed Pods Frameworks */,
+				DF4B287D45591B5B1038F84F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -156,6 +222,7 @@
 		9669A6841BB5086900725241 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Jason;
 				TargetAttributes = {
@@ -192,7 +259,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9669A6971BB5086900725241 /* Main.storyboard in Resources */,
+				9669A6B21BB510DF00725241 /* Main.storyboard in Resources */,
+				9669A6CE1BB510F400725241 /* Image.xcassets in Resources */,
 				9669A69C1BB5086900725241 /* LaunchScreen.xib in Resources */,
 				9669A6991BB5086900725241 /* Images.xcassets in Resources */,
 			);
@@ -207,13 +275,73 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		05E5EBFEF4504C57BD7D690A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChefNote/Pods-ChefNote-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF4B287D45591B5B1038F84F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChefNote/Pods-ChefNote-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E676C9705708B91F752A4B3B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9669A6881BB5086900725241 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9669A6941BB5086900725241 /* ViewController.swift in Sources */,
+				9669A6C71BB510F400725241 /* SavedRecipesViewController.swift in Sources */,
+				9669A6C21BB510F400725241 /* MoreViewController.swift in Sources */,
+				9669A6C91BB510F400725241 /* ImageViewExtension.swift in Sources */,
+				9669A6C31BB510F400725241 /* NewMemberViewController.swift in Sources */,
+				9669A6C81BB510F400725241 /* DiscoverCollectionViewCell.swift in Sources */,
+				9669A6CA1BB510F400725241 /* RecipeDetailTableViewController.swift in Sources */,
 				9669A6921BB5086900725241 /* AppDelegate.swift in Sources */,
+				9669A6CC1BB510F400725241 /* IngredientsTableViewCell.swift in Sources */,
+				9669A6C61BB510F400725241 /* EmptySegue.swift in Sources */,
+				9669A6CD1BB510F400725241 /* DirectionsTableViewCell.swift in Sources */,
+				9669A6C41BB510F400725241 /* LoginViewController.swift in Sources */,
+				9669A6C51BB510F400725241 /* ContainerViewController.swift in Sources */,
+				9669A6C11BB510F400725241 /* DiscoverViewController.swift in Sources */,
+				9669A6CB1BB510F400725241 /* ImageCardTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,14 +364,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9669A6951BB5086900725241 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9669A6961BB5086900725241 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9669A69A1BB5086900725241 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -338,6 +458,7 @@
 		};
 		9669A6AC1BB5086900725241 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D4413C303C563824F8FDC22 /* Pods-ChefNote.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ChefNote/Info.plist;
@@ -348,6 +469,7 @@
 		};
 		9669A6AD1BB5086900725241 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5B0232EDA88D121FA56149D /* Pods-ChefNote.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ChefNote/Info.plist;
@@ -409,6 +531,7 @@
 				9669A6AD1BB5086900725241 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9669A6AE1BB5086900725241 /* Build configuration list for PBXNativeTarget "ChefNoteTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +540,7 @@
 				9669A6B01BB5086900725241 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

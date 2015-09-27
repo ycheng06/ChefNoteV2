@@ -7,16 +7,51 @@
 //
 
 import UIKit
+import Parse
+import FBSDKCoreKit
+import ParseFacebookUtilsV4
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    //    let host:String = "http://localhost:3000/"
+    let host:String = "https://murmuring-inlet-5627.herokuapp.com/"
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // background color of navigation bar
+        UINavigationBar.appearance().barTintColor = UIColor(red:
+            231.0/255.0, green: 95.0/255.0, blue: 53.0/255.0, alpha: 0.3)
+        
+        // set the font and color of navigation bar font
+        if let barFont = UIFont(name: "AvenirNextCondensed-DemiBold",
+            size: 22.0) {
+                UINavigationBar.appearance().titleTextAttributes =
+                    [NSForegroundColorAttributeName:UIColor.whiteColor(),
+                        NSFontAttributeName:barFont]
+        }
+        
+        // back button color
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+
+        
+        Parse.setApplicationId("CsE2VoUmCpgWhctEQ8xik6ARfbkb6Xqfj85Sz5LD", clientKey: "0AB4px5a5GQrp55NIBSe99oTfUo5baDYh5FRS5vA")
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        
         return true
+    }
+    
+    func application(application: UIApplication,
+        openURL url: NSURL,
+        sourceApplication: String?,
+        annotation: AnyObject?) -> Bool {
+            return FBSDKApplicationDelegate.sharedInstance().application(application,
+                openURL: url,
+                sourceApplication: sourceApplication,
+                annotation: annotation)
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -35,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(application: UIApplication) {
