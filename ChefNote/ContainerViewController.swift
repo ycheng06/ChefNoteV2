@@ -17,9 +17,9 @@ class ContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("container view controller view did load")
+        print("container view controller view did load")
         // Check if user is valid here
-        var currentUser = PFUser.currentUser()
+        let currentUser = PFUser.currentUser()
         if currentUser != nil {
             self.performSegueWithIdentifier(validUserViewIdentifier, sender: nil)
             self.currentSegueIdentifier = self.validUserViewIdentifier
@@ -49,8 +49,8 @@ class ContainerViewController: UIViewController {
             
             // if there's something in the container view already
             if self.childViewControllers.count > 0 {
-                let fromViewController = self.childViewControllers[0] as! UIViewController
-                self.swapFromViewController(fromViewController, toViewController: segue.destinationViewController as! UIViewController)
+                let fromViewController = self.childViewControllers[0] 
+                self.swapFromViewController(fromViewController, toViewController: segue.destinationViewController )
             }
             else {
                 // add the controller to container
@@ -62,9 +62,9 @@ class ContainerViewController: UIViewController {
             }
         }
         else if segue.identifier == self.validUserViewIdentifier {
-            let destinationController = segue.destinationViewController as! UIViewController
+            let destinationController = segue.destinationViewController 
             
-            let fromViewController = self.childViewControllers[0] as! UIViewController
+            let fromViewController = self.childViewControllers[0] 
             self.swapFromViewController(fromViewController, toViewController: destinationController)
         }
     }

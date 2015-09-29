@@ -15,8 +15,8 @@ extension UIImageView {
         if let url = NSURL(string: urlString) {
             let request = NSURLRequest(URL: url)
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
-                (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-                self.image = UIImage(data: data)
+                (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
+                self.image = UIImage(data: data!)
             }
         }
     }

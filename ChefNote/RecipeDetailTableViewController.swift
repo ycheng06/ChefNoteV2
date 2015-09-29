@@ -42,12 +42,10 @@ class RecipeDetailTableViewController: UITableViewController {
     func loadRecipeDetail() -> Void {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         Alamofire.request(.GET, appDelegate.host + "api/v1.0/recipe/\(self.recipeId)")
-            .responseJSON{(req, res, json, error) in
-                if error != nil {
-                    NSLog("GET Error: \(error)")
-                }
-                else {
-                    var data:JSON = JSON(json!)
+            .responseJSON{ request, response, result in
+                switch result {
+                case .Success(let json):
+                    var data:JSON = JSON(json)
                     let result:[String:JSON] = data["result"].dictionaryValue
                     
                     if let yield:String = result["yield"]?.string {
@@ -56,10 +54,15 @@ class RecipeDetailTableViewController: UITableViewController {
                     
                     self.ingredients = result["ingredients"]!.arrayValue
                     self.directions = result["directions"]!.arrayValue
-
+                    
                     self.tableView.reloadData()
+
+                break
+                case .Failure( _, let error):
+                    NSLog("GET Error: \(error)")
+                break
                 }
-            }
+        }
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -99,7 +102,7 @@ class RecipeDetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
-            var cell = tableView.dequeueReusableCellWithIdentifier("imageCardCell", forIndexPath: indexPath) as! ImageCardTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("imageCardCell", forIndexPath: indexPath) as! ImageCardTableViewCell
             cell.recipeImageView.image = nil
             cell.recipeImageView.imageFromUrl(self.photo)
             cell.recipeTitleLabel.text = self.recipeTitle
@@ -109,11 +112,11 @@ class RecipeDetailTableViewController: UITableViewController {
         }
         // Set up cell for ingredients
         else if indexPath.row == 1 {
-            var cell = tableView.dequeueReusableCellWithIdentifier("ingredientsCardCell", forIndexPath: indexPath) as! IngredientsTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("ingredientsCardCell", forIndexPath: indexPath) as! IngredientsTableViewCell
             
             var ingredientLabel:String = ""
             for ingredientJSON in self.ingredients {
-                var ingredient = ingredientJSON.stringValue
+                let ingredient = ingredientJSON.stringValue
                 
                 ingredientLabel += "\(ingredient) \n\n"
             }

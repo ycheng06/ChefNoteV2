@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ParseFacebookUtilsV4
 
 
 class NewMemberViewController: UIViewController {
@@ -15,7 +16,7 @@ class NewMemberViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("new member view controller view did load")
+        print("new member view controller view did load")
         // Do any additional setup after loading the view.
     }
 
@@ -25,26 +26,19 @@ class NewMemberViewController: UIViewController {
     }
     
     @IBAction func signupWithFB(sender: AnyObject) {
-
-//        PFFacebookUtils.logInWithPermissionsInBackground(permissions){
-//            (user: PFUser?, error: NSError?) -> Void in
-//        
-//        }
-//        PFFacebookUtils.logInWithPermissions(["email"], block: {
-//            (user: PFUser?, error: NSError?) -> Void in
-//            println("what is goin on")
-//            if let user = user {
-//                if user.isNew {
-//                    println("User signed up and logged in through Facebook!")
-//                    self.containerViewController?.swapViewControllers()
-//                } else {
-//                    println("User logged in through Facebook!")
-//                }
-//                
-//            } else {
-//                println("Uh oh. The user cancelled the Facebook login.")
-//            }
-//        })
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(["email", "public_profile"]){
+            (user: PFUser?, error: NSError?) -> Void in
+            if let user = user {
+                if user.isNew {
+                    print("User signed up and logged in through Facebook!")
+                    self.containerViewController?.swapViewControllers()
+                } else {
+                    print("User logged in through Facebook!")
+                }
+            } else {
+                print("Uh oh. The user cancelled the Facebook login.")
+            }
+        }
     }
     
 

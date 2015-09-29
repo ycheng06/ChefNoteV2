@@ -14,7 +14,7 @@ class MoreViewController: UIViewController {
     @IBOutlet weak var logoutButton: UIButton!
 
     @IBAction func logout(sender: UIButton) {
-        var logoutButton = sender
+        let logoutButton = sender
         logoutButton.enabled = false
         
         PFUser.logOut()

@@ -213,7 +213,7 @@ public class CollectionViewWaterfallLayout: UICollectionViewLayout {
             * 4. Section footer
             */
             var footerHeight: Float
-            var columnIndex = longestColumnIndex()
+            let columnIndex = longestColumnIndex()
             top = columnHeights[columnIndex] - minimumInteritemSpacing + Float(sectionInset.bottom)
             
             if let height = delegate?.collectionView?(collectionView!, layout: self, heightForFooterInSection: section) {
@@ -298,32 +298,32 @@ public class CollectionViewWaterfallLayout: UICollectionViewLayout {
         return attribute
     }
     
-    override public func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject] {
-        var begin:Int = 0
-        var end: Int = unionRects.count
-        var attrs = [UICollectionViewLayoutAttributes]()
-        
-        for i in 0..<unionRects.count {
-            if CGRectIntersectsRect(rect, unionRects[i]) {
-                begin = i * unionSize
-                break
-            }
-        }
-        for i in reverse(0..<unionRects.count) {
-            if CGRectIntersectsRect(rect, unionRects[i]) {
-                end = min((i+1) * unionSize, allItemAttributes.count)
-                break
-            }
-        }
-        for var i = begin; i < end; i++ {
-            let attr = allItemAttributes[i]
-            if CGRectIntersectsRect(rect, attr.frame) {
-                attrs.append(attr)
-            }
-        }
-        
-        return Array(attrs)
-    }
+//    override public func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject] {
+//        var begin:Int = 0
+//        var end: Int = unionRects.count
+//        var attrs = [UICollectionViewLayoutAttributes]()
+//        
+//        for i in 0..<unionRects.count {
+//            if CGRectIntersectsRect(rect, unionRects[i]) {
+//                begin = i * unionSize
+//                break
+//            }
+//        }
+//        for i in reverse(0..<unionRects.count) {
+//            if CGRectIntersectsRect(rect, unionRects[i]) {
+//                end = min((i+1) * unionSize, allItemAttributes.count)
+//                break
+//            }
+//        }
+//        for var i = begin; i < end; i++ {
+//            let attr = allItemAttributes[i]
+//            if CGRectIntersectsRect(rect, attr.frame) {
+//                attrs.append(attr)
+//            }
+//        }
+//        
+//        return Array(attrs)
+//    }
     
     override public func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
         let oldBounds = collectionView?.bounds
@@ -339,7 +339,7 @@ public class CollectionViewWaterfallLayout: UICollectionViewLayout {
         var index: Int = 0
         var shortestHeight = MAXFLOAT
         
-        for (idx, height) in enumerate(columnHeights) {
+        for (idx, height) in columnHeights.enumerate() {
             if height < shortestHeight {
                 shortestHeight = height
                 index = idx
@@ -353,7 +353,7 @@ public class CollectionViewWaterfallLayout: UICollectionViewLayout {
         var index: Int = 0
         var longestHeight:Float = 0
         
-        for (idx, height) in enumerate(columnHeights) {
+        for (idx, height) in columnHeights.enumerate() {
             if height > longestHeight {
                 longestHeight = height
                 index = idx

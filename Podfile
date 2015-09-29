@@ -4,8 +4,8 @@ use_frameworks!
 target 'ChefNote' do
 
 pod "CollectionViewWaterfallLayout"
-pod 'Alamofire', '~> 1.3'
-pod 'SwiftyJSON', '~> 2.2.0'
+pod 'Alamofire'
+pod 'SwiftyJSON'
 
 pod 'Parse'
 pod 'Bolts'

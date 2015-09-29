@@ -70,7 +70,7 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
         self.activityIndicatorContainer!.center = uiView.center
         
         // add a transparent background
-        var loadingView: UIView = UIView()
+        let loadingView: UIView = UIView()
         loadingView.frame = CGRectMake(0, 0, 80, 80)
         loadingView.center = uiView.center
         loadingView.backgroundColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.7)
@@ -78,7 +78,7 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
         loadingView.layer.cornerRadius = 10
         
         // add the activity indicator
-        var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+        let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
         actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
         actInd.activityIndicatorViewStyle =
             UIActivityIndicatorViewStyle.WhiteLarge
@@ -111,14 +111,12 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
         Alamofire.request(.GET, appDelegate.host + "api/v1.0/discover?page=\(pageNumber)")
-            .responseJSON{ (req, res, json, error) in
-                // Check for return error. Log it if that's the case
-                if error != nil {
-                    NSLog("GET Error: \(error)")
-                }
-                else {
-                    var results:JSON = JSON(json!)
-
+            .responseJSON{ req, res, result in
+                
+                switch result {
+                case .Success(let json):
+                    var results:JSON = JSON(json)
+                    
                     self.currentPage = results["page"].intValue // Change the next page variable
                     self.recipes += results["recipes"].arrayValue // Add recipes to local storage
                     
@@ -126,6 +124,11 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
                     self.refreshControl.endRefreshing()
                     
                     self.hideActivityIndicator()
+
+                    break
+                case .Failure( _, let error):
+                    NSLog("GET Error: \(error)")
+                    break
                 }
         }
     }
@@ -157,7 +160,7 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
         cell.totalTimeLabel.text = ""
         cell.publisherLabel.text = ""
         
-        var row = indexPath.row
+        let row = indexPath.row
         var recipe:JSON = nil
 
         // decide which data source to use depending on if search bar is active
@@ -187,9 +190,9 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
                     NSURLConnection.sendAsynchronousRequest(request, queue:
                         // actions to perform in the main queue after image has been loaded
                         NSOperationQueue.mainQueue()) {
-                        (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+                        (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
                             // convert downloaded data into image
-                            let image = UIImage(data:data)
+                            let image = UIImage(data:data!)
         
                             // cache it
                             self.imageCache[photoURLString] = image
@@ -215,9 +218,9 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
             cell.totalTimeLabel.hidden = true
         }
         
-        if let yield:String = basicInfo["yield"]?.string {
-
-        }
+//        if let yield:String = basicInfo["yield"]?.string {
+//
+//        }
         
         if let title:String = basicInfo["title"]?.string {
             cell.recipeNameLabel.text = title
@@ -248,16 +251,18 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
         
         if (searchText != "") {
             Alamofire.request(.GET, appDelegate.host + "api/v1.0/search?keyword=\(searchText)")
-                .responseJSON{ (req, res, json, error) in
-                    // Check for return error. Log it if that's the case
-                    if error != nil {
-                        NSLog("GET Error: \(error)")
-                    }
-                    else {
-                        var results:JSON = JSON(json!)
+                .responseJSON{ (req, res, result) in
+                    switch result {
+                    case .Success(let json):
+                        var results:JSON = JSON(json)
                         
                         self.searchedRecipes = results["recipes"].arrayValue
                         self.collectionView.reloadData()
+                        
+                        break
+                    case .Failure( _, let error):
+                        NSLog("GET Error: \(error)")
+                        break
                     }
             }
         }
@@ -274,7 +279,7 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
             let destinationViewController = segue.destinationViewController as! RecipeDetailTableViewController
             
             // Get the selected index path
-            let indexPaths:[NSIndexPath] = self.collectionView.indexPathsForSelectedItems() as! [NSIndexPath]
+            let indexPaths:[NSIndexPath] = self.collectionView.indexPathsForSelectedItems()! as [NSIndexPath]
             let indexPath = indexPaths[0]
             var recipe:JSON = nil
             

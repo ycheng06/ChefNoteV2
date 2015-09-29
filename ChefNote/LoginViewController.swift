@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func loginWithFB(sender: UIButton) {
-        var loginButton:UIButton = sender
+        let loginButton:UIButton = sender
         loginButton.enabled = false
         
 //        PFFacebookUtils.logInWithPermissions(["public_profile", "email"], block: {
@@ -39,13 +39,13 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginWithEmail(sender: UIButton) {
-        var loginButton = sender
+        let loginButton = sender
         loginButton.enabled = false
         
-        var email = emailAddressLabel.text
-        var password = passwordLabel.text
+        let email = emailAddressLabel.text!
+        let password = passwordLabel.text!
         
-        if !isEmpty(email) && !isEmpty(password) {
+        if !email.characters.isEmpty && !password.characters.isEmpty {
 //            PFUser.logInWithUsernameInBackground("myname", password:"mypass") {
 //                (user: PFUser?, error: NSError?) -> Void in
 //                if user != nil {
