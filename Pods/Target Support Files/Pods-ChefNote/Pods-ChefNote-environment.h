@@ -30,12 +30,6 @@
 #define COCOAPODS_VERSION_MINOR_Bolts_Tasks 3
 #define COCOAPODS_VERSION_PATCH_Bolts_Tasks 0
 
-// CollectionViewWaterfallLayout
-#define COCOAPODS_POD_AVAILABLE_CollectionViewWaterfallLayout
-#define COCOAPODS_VERSION_MAJOR_CollectionViewWaterfallLayout 0
-#define COCOAPODS_VERSION_MINOR_CollectionViewWaterfallLayout 2
-#define COCOAPODS_VERSION_PATCH_CollectionViewWaterfallLayout 1
-
 // FBSDKCoreKit
 #define COCOAPODS_POD_AVAILABLE_FBSDKCoreKit
 #define COCOAPODS_VERSION_MAJOR_FBSDKCoreKit 4

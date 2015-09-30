@@ -6,7 +6,6 @@ PODS:
   - Bolts/AppLinks (1.3.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.3.0)
-  - CollectionViewWaterfallLayout (0.2.1)
   - FBSDKCoreKit (4.6.0):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc (= 4.6.0)
@@ -30,7 +29,6 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Bolts
-  - CollectionViewWaterfallLayout
   - FBSDKCoreKit
   - FBSDKLoginKit
   - Parse
@@ -40,7 +38,6 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
   Bolts: 805a4a87413e49d4a0c2b7d469084cbc46b09342
-  CollectionViewWaterfallLayout: 5e72ddd5be0a69cd36365d54908221dabaea9549
   FBSDKCoreKit: 9954492d90c5fd65ae831395697a1660360d61f1
   FBSDKLoginKit: 3d07febbfa884b9878cacba54f705bb41f07d4b6
   Parse: 17ad8e0677ed682f7f00503860fcda0f4eb74168

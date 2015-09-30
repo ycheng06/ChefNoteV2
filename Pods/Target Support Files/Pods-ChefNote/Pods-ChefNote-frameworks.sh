@@ -50,7 +50,6 @@ code_sign() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Alamofire.framework'
   install_framework 'Bolts.framework'
-  install_framework 'CollectionViewWaterfallLayout.framework'
   install_framework 'FBSDKCoreKit.framework'
   install_framework 'FBSDKLoginKit.framework'
   install_framework 'Parse.framework'
@@ -60,7 +59,6 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Alamofire.framework'
   install_framework 'Bolts.framework'
-  install_framework 'CollectionViewWaterfallLayout.framework'
   install_framework 'FBSDKCoreKit.framework'
   install_framework 'FBSDKLoginKit.framework'
   install_framework 'Parse.framework'

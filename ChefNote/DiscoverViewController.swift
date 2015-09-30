@@ -10,9 +10,10 @@ import UIKit
 import CollectionViewWaterfallLayout
 import Alamofire
 import SwiftyJSON
+import AVFoundation
 
-class DiscoverViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate, UISearchResultsUpdating, UISearchBarDelegate {
-
+class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
+//    CollectionViewWaterfallLayoutDelegate
     @IBOutlet var collectionView: UICollectionView!
     
     private var currentPage:Int = 1
@@ -32,16 +33,10 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
         super.viewDidLoad()
         
         title = "Discover"
-        
-        // Collection View Waterfall layout setup
-        let layout = CollectionViewWaterfallLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.headerInset = UIEdgeInsetsMake(20, 0, 0, 0)
-        layout.headerHeight = 20
-        layout.footerHeight = 20
-        layout.minimumColumnSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        collectionView.collectionViewLayout = layout
+
+        if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
+            layout.delegate = self
+        }
         
         // Initialize search controller
         searchController = UISearchController(searchResultsController: nil)
@@ -112,22 +107,20 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
 
         Alamofire.request(.GET, appDelegate.host + "api/v1.0/discover?page=\(pageNumber)")
             .responseJSON{ req, res, result in
-                
                 switch result {
-                case .Success(let json):
-                    var results:JSON = JSON(json)
+                case .Success:
+                    var results:JSON = JSON(result.value!)
                     
                     self.currentPage = results["page"].intValue // Change the next page variable
                     self.recipes += results["recipes"].arrayValue // Add recipes to local storage
-                    
                     self.collectionView.reloadData()
                     self.refreshControl.endRefreshing()
                     
                     self.hideActivityIndicator()
 
                     break
-                case .Failure( _, let error):
-                    NSLog("GET Error: \(error)")
+                case .Failure:
+                    NSLog("GET Error: \(result.error)")
                     break
                 }
         }
@@ -143,9 +136,11 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
     }
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        
+
         // detect scroll to the bottom, so need to make another request to api for more recipes
-        if indexPath.row == self.recipes.count - 1 {
+        print(indexPath.item)
+        if indexPath.item == self.recipes.count - 1{
+//            print(indexPath.item)
             // Update only if search is not active
             if !searchController.active {
                 updateRecipe(self.currentPage + 1)
@@ -159,7 +154,7 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
         cell.recipeNameLabel.text = ""
         cell.totalTimeLabel.text = ""
         cell.publisherLabel.text = ""
-        
+
         let row = indexPath.row
         var recipe:JSON = nil
 
@@ -175,7 +170,6 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
         let basicInfo:[String: JSON] = recipe["basic"].dictionaryValue
         
         if let photoURLString:String = basicInfo["photo"]?.string {
-
             if let image = self.imageCache[photoURLString] {
                 cell.imageView.image = image
             }
@@ -192,14 +186,20 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
                         NSOperationQueue.mainQueue()) {
                         (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
                             // convert downloaded data into image
-                            let image = UIImage(data:data!)
-        
-                            // cache it
-                            self.imageCache[photoURLString] = image
+                            if let downloadedImage = data {
+                                let image = UIImage(data:downloadedImage)
+                                
+                                // cache it
+                                self.imageCache[photoURLString] = image
+                                
+                                cell.imageLoadingIndicator.stopAnimating()
+                                cell.imageLoadingIndicator.hidden = true
+                                cell.imageView.image = image
+                            }
                             
-                            cell.imageLoadingIndicator.stopAnimating()
-                            cell.imageLoadingIndicator.hidden = true
-                            cell.imageView.image = image
+                            if let downloadedError = error {
+                                print(downloadedError)
+                            }
                     }
                 }
                 
@@ -227,12 +227,6 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
         }
         
         return cell
-    }
-    
-    
-    // MARK: WaterfallLayoutDelegate
-    func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 150, height: 220)
     }
     
     // MARK: Search result
@@ -319,28 +313,12 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, Coll
 
         }
     }
-    
-    //    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-    //        var reusableView: UICollectionReusableView? = nil
-    //
-    //        if kind == CollectionViewWaterfallElementKindSectionHeader {
-    //            reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Header", forIndexPath: indexPath) as? UICollectionReusableView
-    //
-    //            if let view = reusableView {
-    //                view.backgroundColor = UIColor.redColor()
-    //
-    //            }
-    //        }
-    //        else if kind == CollectionViewWaterfallElementKindSectionFooter {
-    //            reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Footer", forIndexPath: indexPath) as? UICollectionReusableView
-    //            if let view = reusableView {
-    //                view.backgroundColor = UIColor.blueColor()
-    //            }
-    //        }
-    //        
-    //        return reusableView!
-    //    }
+}
 
+extension DiscoverViewController : PinterestLayoutDelegate {
+    func collectionView(collectionView: UICollectionView, heightForItemAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return CGFloat(220)
+    }
 }
 
 

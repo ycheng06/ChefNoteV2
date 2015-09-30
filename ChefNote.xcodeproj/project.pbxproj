@@ -27,6 +27,7 @@
 		9669A6CC1BB510F400725241 /* IngredientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6BE1BB510F400725241 /* IngredientsTableViewCell.swift */; };
 		9669A6CD1BB510F400725241 /* DirectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6BF1BB510F400725241 /* DirectionsTableViewCell.swift */; };
 		9669A6CE1BB510F400725241 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9669A6C01BB510F400725241 /* Image.xcassets */; };
+		96892B431BBB78650057143F /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96892B421BBB78650057143F /* PinterestLayout.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		9669A6BE1BB510F400725241 /* IngredientsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewCell.swift; sourceTree = "<group>"; };
 		9669A6BF1BB510F400725241 /* DirectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsTableViewCell.swift; sourceTree = "<group>"; };
 		9669A6C01BB510F400725241 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
+		96892B421BBB78650057143F /* PinterestLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
 		C5B0232EDA88D121FA56149D /* Pods-ChefNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChefNote.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChefNote/Pods-ChefNote.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,19 +121,11 @@
 		9669A68E1BB5086900725241 /* ChefNote */ = {
 			isa = PBXGroup;
 			children = (
-				9669A6B31BB510F400725241 /* DiscoverViewController.swift */,
-				9669A6B41BB510F400725241 /* MoreViewController.swift */,
-				9669A6B51BB510F400725241 /* NewMemberViewController.swift */,
-				9669A6B61BB510F400725241 /* LoginViewController.swift */,
-				9669A6B71BB510F400725241 /* ContainerViewController.swift */,
+				96892B451BBBAEA10057143F /* Views */,
+				96892B441BBBAE9A0057143F /* Controllers */,
+				96892B411BBB782A0057143F /* Layouts */,
 				9669A6B81BB510F400725241 /* EmptySegue.swift */,
-				9669A6B91BB510F400725241 /* SavedRecipesViewController.swift */,
-				9669A6BA1BB510F400725241 /* DiscoverCollectionViewCell.swift */,
 				9669A6BB1BB510F400725241 /* ImageViewExtension.swift */,
-				9669A6BC1BB510F400725241 /* RecipeDetailTableViewController.swift */,
-				9669A6BD1BB510F400725241 /* ImageCardTableViewCell.swift */,
-				9669A6BE1BB510F400725241 /* IngredientsTableViewCell.swift */,
-				9669A6BF1BB510F400725241 /* DirectionsTableViewCell.swift */,
 				9669A6C01BB510F400725241 /* Image.xcassets */,
 				9669A6911BB5086900725241 /* AppDelegate.swift */,
 				9669A6B11BB510DF00725241 /* Main.storyboard */,
@@ -165,6 +159,39 @@
 				9669A6A61BB5086900725241 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		96892B411BBB782A0057143F /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				96892B421BBB78650057143F /* PinterestLayout.swift */,
+			);
+			name = Layouts;
+			sourceTree = "<group>";
+		};
+		96892B441BBBAE9A0057143F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9669A6B31BB510F400725241 /* DiscoverViewController.swift */,
+				9669A6B41BB510F400725241 /* MoreViewController.swift */,
+				9669A6B61BB510F400725241 /* LoginViewController.swift */,
+				9669A6B51BB510F400725241 /* NewMemberViewController.swift */,
+				9669A6B71BB510F400725241 /* ContainerViewController.swift */,
+				9669A6B91BB510F400725241 /* SavedRecipesViewController.swift */,
+				9669A6BC1BB510F400725241 /* RecipeDetailTableViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		96892B451BBBAEA10057143F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9669A6BA1BB510F400725241 /* DiscoverCollectionViewCell.swift */,
+				9669A6BD1BB510F400725241 /* ImageCardTableViewCell.swift */,
+				9669A6BE1BB510F400725241 /* IngredientsTableViewCell.swift */,
+				9669A6BF1BB510F400725241 /* DirectionsTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		E7358DD9AC9BF9C29679426A /* Frameworks */ = {
@@ -329,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96892B431BBB78650057143F /* PinterestLayout.swift in Sources */,
 				9669A6C71BB510F400725241 /* SavedRecipesViewController.swift in Sources */,
 				9669A6C21BB510F400725241 /* MoreViewController.swift in Sources */,
 				9669A6C91BB510F400725241 /* ImageViewExtension.swift in Sources */,

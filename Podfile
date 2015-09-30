@@ -3,7 +3,6 @@ use_frameworks!
 
 target 'ChefNote' do
 
-pod "CollectionViewWaterfallLayout"
 pod 'Alamofire'
 pod 'SwiftyJSON'
 
