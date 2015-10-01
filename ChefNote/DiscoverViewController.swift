@@ -7,25 +7,20 @@
 //
 
 import UIKit
-import CollectionViewWaterfallLayout
 import Alamofire
 import SwiftyJSON
 import AVFoundation
 
 class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
-//    CollectionViewWaterfallLayoutDelegate
     @IBOutlet var collectionView: UICollectionView!
     
     private var currentPage:Int = 1
     private var recipes:[JSON] = [] // discovering recipe
     private var searchedRecipes:[JSON] = [] // recipes from keyword search
-
     private var refreshControl:UIRefreshControl = UIRefreshControl()
     private var searchController:UISearchController!
     private var searchTimer:NSTimer?
-    
     private var imageCache:[String:UIImage] = [String:UIImage]()
-    
     private var activityIndicatorContainer:UIView?
     
     @IBOutlet weak var searchBarPlaceholder: UIView!
@@ -36,6 +31,7 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
 
         if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
             layout.delegate = self
+            layout.headerInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         }
         
         // Initialize search controller
@@ -94,7 +90,6 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func updateRecipe() -> Void {
@@ -120,7 +115,7 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
 
                     break
                 case .Failure:
-                    NSLog("GET Error: \(result.error)")
+                    NSLog("UpdateRecipe GET Error: \(result.error)")
                     break
                 }
         }
@@ -138,9 +133,7 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
 
         // detect scroll to the bottom, so need to make another request to api for more recipes
-        print(indexPath.item)
         if indexPath.item == self.recipes.count - 1{
-//            print(indexPath.item)
             // Update only if search is not active
             if !searchController.active {
                 updateRecipe(self.currentPage + 1)
@@ -246,6 +239,7 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
         if (searchText != "") {
             Alamofire.request(.GET, appDelegate.host + "api/v1.0/search?keyword=\(searchText)")
                 .responseJSON{ (req, res, result) in
+                    
                     switch result {
                     case .Success(let json):
                         var results:JSON = JSON(json)
@@ -255,7 +249,7 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
                         
                         break
                     case .Failure( _, let error):
-                        NSLog("GET Error: \(error)")
+                        NSLog("SearchRecipe GET Error: \(error)")
                         break
                     }
             }
@@ -298,7 +292,6 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
                 destinationViewController.recipeTitle = title
             }
             
-            
             //            if let totalTime:String = recipe["totalTime"].string {
             //                cell.totalTimeLabel.text = totalTime
             //                cell.totalTimeLabel.hidden = false
@@ -309,15 +302,21 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
             //            if let yield:String = recipe["yield"].string {
             //                
             //            }
-            
-
         }
     }
 }
 
 extension DiscoverViewController : PinterestLayoutDelegate {
     func collectionView(collectionView: UICollectionView, heightForItemAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return CGFloat(220)
+        return CGFloat(280)
+    }
+    
+    func collectionView(collectionView: UICollectionView, heightForHeaderInSection section: Int) -> Float {
+        return 0.0
+    }
+    
+    func collectionView(collectionView: UICollectionView, insetForHeaderInSection section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets()
     }
 }
 

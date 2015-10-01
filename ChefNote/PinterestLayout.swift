@@ -8,25 +8,21 @@
 
 import UIKit
 
-protocol PinterestLayoutDelegate {
+public protocol PinterestLayoutDelegate {
 
     func collectionView(collectionView:UICollectionView, heightForItemAtIndexPath indexPath:NSIndexPath) -> CGFloat
-    
+    func collectionView(collectionView:UICollectionView, heightForHeaderInSection section:Int) -> Float
+    func collectionView(collectionView:UICollectionView, insetForHeaderInSection section:Int) -> UIEdgeInsets
 }
 
 
-class PinterestLayout: UICollectionViewLayout {
-    // 1
-    var delegate: PinterestLayoutDelegate!
+public class PinterestLayout: UICollectionViewLayout {
+    public var delegate: PinterestLayoutDelegate!
+    public var headerInsets: UIEdgeInsets?
     
-    // 2
-    var numberOfColumns = 2
-    var cellPadding: CGFloat = 6.0
-    
-    // 3
+    private var numberOfColumns = 2
+    private var cellPadding: CGFloat = 6.0
     private var allItemAttributes = [UICollectionViewLayoutAttributes]()
-    
-    // 4
     private var contentHeight: CGFloat  = 0.0
     private var contentWidth: CGFloat {
         let insets = collectionView!.contentInset
@@ -35,14 +31,14 @@ class PinterestLayout: UICollectionViewLayout {
     
     // perform up-front calculations needed to provide layout information
     // called when collectionView.reloadData() is called
-    override func prepareLayout() {
+    override public func prepareLayout() {
         super.prepareLayout()
         
         // Remove attributes just in case more items are added and numbers need to be
         // recacuated
         allItemAttributes.removeAll()
 
-            // 2
+        // Basic calculations / settings
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
         var xOffset = [CGFloat]()
         for column in 0 ..< numberOfColumns {
@@ -51,7 +47,11 @@ class PinterestLayout: UICollectionViewLayout {
         var column = 0
         var yOffset = [CGFloat](count: numberOfColumns, repeatedValue: 0)
         
-        // 3
+        // Header
+        
+        
+        
+        // Items
         for item in 0 ..< collectionView!.numberOfItemsInSection(0) {
             
             let indexPath = NSIndexPath(forItem: item, inSection: 0)
@@ -79,12 +79,12 @@ class PinterestLayout: UICollectionViewLayout {
     }
     
     // Overall size of the entire content area
-    override func collectionViewContentSize() -> CGSize {
+    override public func collectionViewContentSize() -> CGSize {
         return CGSize(width: contentWidth, height: contentHeight)
     }
     
     // Return attributs for cells and views that are in the specified rectangle
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override public func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
         
         for attributes  in allItemAttributes {

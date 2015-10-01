@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    //    let host:String = "http://localhost:3000/"
-    let host:String = "https://murmuring-inlet-5627.herokuapp.com/"
+        let host:String = "http://localhost:5000/"
+//    let host:String = "https://murmuring-inlet-5627.herokuapp.com/"
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

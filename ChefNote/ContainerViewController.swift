@@ -43,30 +43,36 @@ class ContainerViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
+
+        
         if segue.identifier == self.invalidUserViewIdentifier {
-            let destinationController = segue.destinationViewController as! NewMemberViewController
-            destinationController.containerViewController = self
+            let newMemberViewController = segue.destinationViewController as! NewMemberViewController
+            newMemberViewController.containerViewController = self
             
-            // if there's something in the container view already
-            if self.childViewControllers.count > 0 {
-                let fromViewController = self.childViewControllers[0] 
-                self.swapFromViewController(fromViewController, toViewController: segue.destinationViewController )
-            }
-            else {
-                // add the controller to container
-                self.addChildViewController(destinationController)
-                // add the view
-                self.view.addSubview(destinationController.view)
-                // assign the parent
-                destinationController.didMoveToParentViewController(self)
-            }
         }
         else if segue.identifier == self.validUserViewIdentifier {
-            let destinationController = segue.destinationViewController 
-            
-            let fromViewController = self.childViewControllers[0] 
-            self.swapFromViewController(fromViewController, toViewController: destinationController)
+//            let destinationController = segue.destinationViewController 
+//            
+//            let fromViewController = self.childViewControllers[0] 
+//            self.swapFromViewController(fromViewController, toViewController: destinationController)
         }
+        
+        let destinationController = segue.destinationViewController
+        
+        // if there's something in the container view already
+        if self.childViewControllers.count > 0 {
+            let fromViewController = self.childViewControllers[0]
+            self.swapFromViewController(fromViewController, toViewController: segue.destinationViewController )
+        }
+        else {
+            // add the controller to container
+            self.addChildViewController(destinationController)
+            // add the view
+            self.view.addSubview(destinationController.view)
+            // assign the parent
+            destinationController.didMoveToParentViewController(self)
+        }
+
     }
     
     // remove fromViewController from container view and add the toViewController
