@@ -17,11 +17,11 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageLoadingIndicator: UIActivityIndicatorView!
-    var saveButtonCallback:((UIButton)->Void)?
+    var saveButtonCallback:((AnyObject)->Void)?
     
     @IBAction func saveButtonClicked(sender: UIButton) {
         if let callback = saveButtonCallback {
-            callback(sender)
+            callback(self)
         }
     }
 

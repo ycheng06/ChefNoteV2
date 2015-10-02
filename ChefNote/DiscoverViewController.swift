@@ -190,22 +190,47 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
             cell.recipeNameLabel.text = title
         }
         
-        if let _ = PFUser.currentUser() {
-            cell.saveButton.hidden = false
-        }
-        else {
-            cell.saveButton.hidden = true
-        }
-        
-        cell.saveButtonCallback = self.saveButtonClickedCallback
+       showOrHideSaveButton(cell, recipeId: recipe["_id"].stringValue)
         
         return cell
     }
     
+    // Check if user has logged in. show save button if login
+    // Check if recipe has been favorited already, change the button image accordingly
+    func showOrHideSaveButton(cell:DiscoverCollectionViewCell, recipeId:String){
+        if let _ = PFUser.currentUser() {
+            cell.saveButton.hidden = false
+            
+            // check if recipe is favorited 
+            let query = PFQuery(className: "AllRecipe")
+            query.whereKey("recipeIds", equalTo: recipeId)
+            query.fromLocalDatastore()
+            query.findObjectsInBackgroundWithBlock{
+                (objects: [PFObject]?, error: NSError?) -> Void in
+                
+                if error == nil {
+                    // recipe saved as favorite already
+                    if objects?.count > 0 {
+                        cell.saveButton.imageView?.image = UIImage(named: "Like-Filled.png")
+                        cell.saveButtonCallback = nil
+                    }
+                    else {
+                        cell.saveButton.imageView?.image = UIImage(named: "Like.png")
+                        cell.saveButtonCallback = self.saveButtonClickedCallback
+                    }
+                }
+            }
+        }
+        else {
+            cell.saveButton.hidden = true
+        }
+    }
+    
     // Save the recipe when favoirte button clicked
-    func saveButtonClickedCallback(button:UIButton) -> Void {
-        let buttonPosition = button.convertPoint(CGPointZero, toView: self.collectionView)
-        let currentIndexPath = collectionView.indexPathForItemAtPoint(buttonPosition)
+    func saveButtonClickedCallback(cell:AnyObject) -> Void {
+        let discoverCell = cell as! DiscoverCollectionViewCell
+        let button = discoverCell.saveButton
+        let currentIndexPath = collectionView.indexPathForCell(discoverCell)
 
         var recipe:JSON = nil
         
@@ -230,6 +255,8 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
                 if error == nil {
                     // Do something with the found objects
                     for object in objects! {
+                        discoverCell.saveButtonCallback = nil
+                        button.imageView?.image = UIImage(named: "Like-Filled.png")
                         object.addUniqueObject(recipeId, forKey: "recipeIds")
                         object.saveEventually()
                     }

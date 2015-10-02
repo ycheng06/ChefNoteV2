@@ -19,6 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let host:String = "http://localhost:5000/"
 //    let host:String = "https://murmuring-inlet-5627.herokuapp.com/"
     
+    func valueForAPIKey(keyname:String) -> String {
+        // Credit to the original source for this technique at
+        // http://blog.lazerwalker.com/blog/2014/05/14/handling-private-api-keys-in-open-source-ios-apps
+        let filePath = NSBundle.mainBundle().pathForResource("APIKeys", ofType:"plist")
+        let plist = NSDictionary(contentsOfFile:filePath!)
+        
+        let value:String = plist?.objectForKey(keyname) as! String
+        return value
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -38,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
 
         Parse.enableLocalDatastore()
-        Parse.setApplicationId("CsE2VoUmCpgWhctEQ8xik6ARfbkb6Xqfj85Sz5LD", clientKey: "0AB4px5a5GQrp55NIBSe99oTfUo5baDYh5FRS5vA")
+        Parse.setApplicationId(valueForAPIKey("ParseApplicationId"), clientKey: valueForAPIKey("ParseClientId"))
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
         return true

@@ -26,7 +26,7 @@
 		9669A6CD1BB510F400725241 /* DirectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6BF1BB510F400725241 /* DirectionsTableViewCell.swift */; };
 		9669A6CE1BB510F400725241 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9669A6C01BB510F400725241 /* Image.xcassets */; };
 		96892B431BBB78650057143F /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96892B421BBB78650057143F /* PinterestLayout.swift */; settings = {ASSET_TAGS = (); }; };
-		968DF0E11BBE35040080FF0C /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 968DF0E01BBE35040080FF0C /* Keys.plist */; settings = {ASSET_TAGS = (); }; };
+		968DF0E31BBE36710080FF0C /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 968DF0E21BBE36710080FF0C /* APIKeys.plist */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +64,7 @@
 		9669A6BF1BB510F400725241 /* DirectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsTableViewCell.swift; sourceTree = "<group>"; };
 		9669A6C01BB510F400725241 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		96892B421BBB78650057143F /* PinterestLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
-		968DF0E01BBE35040080FF0C /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		968DF0E21BBE36710080FF0C /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		C5B0232EDA88D121FA56149D /* Pods-ChefNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChefNote.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChefNote/Pods-ChefNote.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				9669A6901BB5086900725241 /* Info.plist */,
-				968DF0E01BBE35040080FF0C /* Keys.plist */,
+				968DF0E21BBE36710080FF0C /* APIKeys.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				968DF0E11BBE35040080FF0C /* Keys.plist in Resources */,
+				968DF0E31BBE36710080FF0C /* APIKeys.plist in Resources */,
 				9669A6B21BB510DF00725241 /* Main.storyboard in Resources */,
 				9669A6CE1BB510F400725241 /* Image.xcassets in Resources */,
 			);
