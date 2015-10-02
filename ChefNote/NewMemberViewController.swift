@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import ParseFacebookUtilsV4
+import Parse
 
 
 class NewMemberViewController: UIViewController {
@@ -32,6 +33,15 @@ class NewMemberViewController: UIViewController {
             if let user = user {
                 if user.isNew {
                     print("User signed up and logged in through Facebook!")
+                    
+                    // If user is new set up the data schema 
+                    let allRecipe = PFObject(className: "AllRecipe")
+                    allRecipe["createdBy"] = user
+                    allRecipe.ACL = PFACL(user: user)
+                    allRecipe.pinInBackground()
+                    allRecipe.saveEventually()
+                    
+                    
                     self.containerViewController?.swapViewControllers()
                 } else {
                     print("User logged in through Facebook!")

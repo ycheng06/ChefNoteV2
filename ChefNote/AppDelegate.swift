@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // back button color
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
 
-        
+        Parse.enableLocalDatastore()
         Parse.setApplicationId("CsE2VoUmCpgWhctEQ8xik6ARfbkb6Xqfj85Sz5LD", clientKey: "0AB4px5a5GQrp55NIBSe99oTfUo5baDYh5FRS5vA")
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         

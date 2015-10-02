@@ -50,6 +50,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqS-dn-6xS">
                                             <rect key="frame" x="110" y="208" width="32" height="32"/>
                                             <state key="normal" image="Like"/>
+                                            <connections>
+                                                <action selector="saveButtonClicked:" destination="GDs-iQ-z1W" eventType="touchUpInside" id="iew-hy-aHS"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -66,6 +69,7 @@
                                     <outlet property="imageView" destination="T4c-bb-T0c" id="UHZ-Lc-NLI"/>
                                     <outlet property="publisherLabel" destination="HhK-9E-gQD" id="LkE-yk-z6y"/>
                                     <outlet property="recipeNameLabel" destination="jVH-Hz-TIE" id="Q0B-mw-9Pa"/>
+                                    <outlet property="saveButton" destination="PqS-dn-6xS" id="fMP-OY-Bow"/>
                                     <outlet property="totalTimeLabel" destination="pOf-iw-mVD" id="QVG-YJ-YXq"/>
                                     <segue destination="b43-He-PI3" kind="push" identifier="showRecipeDetailView" id="OmN-tA-cxI"/>
                                 </connections>

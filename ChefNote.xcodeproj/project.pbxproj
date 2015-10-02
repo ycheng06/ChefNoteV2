@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8BA8F39AFFA5B74C6FDA3B57 /* Pods_ChefNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E44A0794C189DCE6FA56434 /* Pods_ChefNote.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9669A6921BB5086900725241 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6911BB5086900725241 /* AppDelegate.swift */; };
-		9669A69C1BB5086900725241 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9669A69A1BB5086900725241 /* LaunchScreen.xib */; };
 		9669A6A81BB5086900725241 /* ChefNoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6A71BB5086900725241 /* ChefNoteTests.swift */; };
 		9669A6B21BB510DF00725241 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9669A6B11BB510DF00725241 /* Main.storyboard */; };
 		9669A6C11BB510F400725241 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669A6B31BB510F400725241 /* DiscoverViewController.swift */; };
@@ -45,7 +44,6 @@
 		9669A68C1BB5086900725241 /* ChefNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChefNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9669A6901BB5086900725241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9669A6911BB5086900725241 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9669A69B1BB5086900725241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9669A6A11BB5086900725241 /* ChefNoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChefNoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9669A6A61BB5086900725241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9669A6A71BB5086900725241 /* ChefNoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefNoteTests.swift; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 				9669A6C01BB510F400725241 /* Image.xcassets */,
 				9669A6911BB5086900725241 /* AppDelegate.swift */,
 				9669A6B11BB510DF00725241 /* Main.storyboard */,
-				9669A69A1BB5086900725241 /* LaunchScreen.xib */,
 				9669A68F1BB5086900725241 /* Supporting Files */,
 			);
 			path = ChefNote;
@@ -286,7 +283,6 @@
 			files = (
 				9669A6B21BB510DF00725241 /* Main.storyboard in Resources */,
 				9669A6CE1BB510F400725241 /* Image.xcassets in Resources */,
-				9669A69C1BB5086900725241 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,17 +383,6 @@
 			targetProxy = 9669A6A21BB5086900725241 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		9669A69A1BB5086900725241 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9669A69B1BB5086900725241 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		9669A6A91BB5086900725241 /* Debug */ = {

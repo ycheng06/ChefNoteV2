@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import AVFoundation
+import Parse
 
 class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     @IBOutlet var collectionView: UICollectionView!
@@ -125,11 +126,13 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
         return 1
     }
     
+    // NumberOfItemsInSection
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // Use total items from different data source if search controller is active
         return (searchController.active) ? self.searchedRecipes.count : self.recipes.count
     }
     
+    // WillDisplayCell
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
 
         // detect scroll to the bottom, so need to make another request to api for more recipes
@@ -141,6 +144,7 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
         }
     }
     
+    // CellForItemAtIndexPath
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! DiscoverCollectionViewCell
         cell.imageView.image = nil
@@ -159,45 +163,12 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
             recipe = self.recipes[row]
         }
         
+        
         // ------- Start populating cell data ---------------
         let basicInfo:[String: JSON] = recipe["basic"].dictionaryValue
         
         if let photoURLString:String = basicInfo["photo"]?.string {
-            if let image = self.imageCache[photoURLString] {
-                cell.imageView.image = image
-            }
-            else {
-                cell.imageLoadingIndicator.hidden = false
-                cell.imageLoadingIndicator.startAnimating()
-                
-                if let url = NSURL(string: photoURLString){
-                    let request = NSURLRequest(URL: url)
-                    
-                    // load image from url asynchronously
-                    NSURLConnection.sendAsynchronousRequest(request, queue:
-                        // actions to perform in the main queue after image has been loaded
-                        NSOperationQueue.mainQueue()) {
-                        (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
-                            // convert downloaded data into image
-                            if let downloadedImage = data {
-                                let image = UIImage(data:downloadedImage)
-                                
-                                // cache it
-                                self.imageCache[photoURLString] = image
-                                
-                                cell.imageLoadingIndicator.stopAnimating()
-                                cell.imageLoadingIndicator.hidden = true
-                                cell.imageView.image = image
-                            }
-                            
-                            if let downloadedError = error {
-                                print(downloadedError)
-                            }
-                    }
-                }
-                
-            }
-            
+            downloadImageAndCache(photoURLString, cell: cell)
         }
         
         if let publisher:String = basicInfo["publisher"]?.string {
@@ -219,7 +190,93 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
             cell.recipeNameLabel.text = title
         }
         
+        if let _ = PFUser.currentUser() {
+            cell.saveButton.hidden = false
+        }
+        else {
+            cell.saveButton.hidden = true
+        }
+        
+        cell.saveButtonCallback = self.saveButtonClickedCallback
+        
         return cell
+    }
+    
+    // Save the recipe when favoirte button clicked
+    func saveButtonClickedCallback(button:UIButton) -> Void {
+        let buttonPosition = button.convertPoint(CGPointZero, toView: self.collectionView)
+        let currentIndexPath = collectionView.indexPathForItemAtPoint(buttonPosition)
+
+        var recipe:JSON = nil
+        
+        // decide which data source to use depending on if search bar is active
+        if searchController.active && self.searchedRecipes.count > 0 {
+            recipe = self.searchedRecipes[currentIndexPath!.row]
+        }
+        else{
+            recipe = self.recipes[currentIndexPath!.row]
+        }
+        
+        let recipeId = recipe["_id"].stringValue
+
+        
+        if let user = PFUser.currentUser() {
+            let query = PFQuery(className:"AllRecipe")
+            query.whereKey("createdBy", equalTo: user)
+            query.fromLocalDatastore()
+            query.findObjectsInBackgroundWithBlock{
+                (objects: [PFObject]?, error: NSError?) -> Void in
+                
+                if error == nil {
+                    // Do something with the found objects
+                    for object in objects! {
+                        object.addUniqueObject(recipeId, forKey: "recipeIds")
+                        object.saveEventually()
+                    }
+                } else {
+                    // Log details of the failure
+                    print("Error: \(error!) \(error!.userInfo)")
+                }
+            }
+        }
+    }
+    
+    // Download image from url in a background thread and cache it for later use
+    func downloadImageAndCache(photoURL:String, cell:DiscoverCollectionViewCell) -> Void{
+        if let image = self.imageCache[photoURL] {
+            cell.imageView.image = image
+        }
+        else {
+            cell.imageLoadingIndicator.hidden = false
+            cell.imageLoadingIndicator.startAnimating()
+            
+            if let url = NSURL(string: photoURL){
+                let request = NSURLRequest(URL: url)
+                
+                // load image from url asynchronously
+                NSURLConnection.sendAsynchronousRequest(request, queue:
+                    // actions to perform in the main queue after image has been loaded
+                    NSOperationQueue.mainQueue()) {
+                        (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
+                        // convert downloaded data into image
+                        if let downloadedImage = data {
+                            let image = UIImage(data:downloadedImage)
+                            
+                            // cache it
+                            self.imageCache[photoURL] = image
+                            
+                            cell.imageLoadingIndicator.stopAnimating()
+                            cell.imageLoadingIndicator.hidden = true
+                            cell.imageView.image = image
+                        }
+                        
+                        if let downloadedError = error {
+                            print(downloadedError)
+                        }
+                }
+            }
+            
+        }
     }
     
     // MARK: Search result
