@@ -102,7 +102,7 @@
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="imageCardCell" rowHeight="330" id="cZb-Aq-our" customClass="ImageCardTableViewCell" customModule="ChefNote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="86" width="320" height="330"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="330"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cZb-Aq-our" id="58e-Sz-dWV">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="329"/>
@@ -156,7 +156,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ingredientsCardCell" rowHeight="317" id="bH4-w3-cEe" customClass="IngredientsTableViewCell" customModule="ChefNote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="416" width="320" height="317"/>
+                                <rect key="frame" x="0.0" y="352" width="320" height="317"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bH4-w3-cEe" id="4S4-Tc-h58">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="316"/>
@@ -201,7 +201,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="directionsCardCell" rowHeight="317" id="1zT-ni-88D" customClass="DirectionsTableViewCell" customModule="ChefNote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="733" width="320" height="317"/>
+                                <rect key="frame" x="0.0" y="669" width="320" height="317"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1zT-ni-88D" id="1CG-7U-XKU">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="316"/>
@@ -271,10 +271,10 @@
             </objects>
             <point key="canvasLocation" x="-569" y="793"/>
         </scene>
-        <!--Saved Recipes View Controller-->
+        <!--View Controller-->
         <scene sceneID="iKa-rk-oHC">
             <objects>
-                <viewController id="RRI-5h-vZR" customClass="SavedRecipesViewController" customModule="ChefNote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RRI-5h-vZR" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="goV-yb-AgX"/>
                         <viewControllerLayoutGuide type="bottom" id="0KS-HJ-cSU"/>
@@ -373,7 +373,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZDP-M9-A8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2837" y="-103"/>
+            <point key="canvasLocation" x="2857" y="667"/>
         </scene>
         <!--Reset Password-->
         <scene sceneID="gLR-O3-scN">
@@ -414,7 +414,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y2d-co-9RM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3335" y="-103"/>
+            <point key="canvasLocation" x="3425" y="667"/>
         </scene>
         <!--Discover-->
         <scene sceneID="RWg-9e-4cc">
@@ -504,7 +504,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vai-nt-Z86" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2347" y="-103"/>
+            <point key="canvasLocation" x="2341" y="667"/>
         </scene>
         <!--New Member View Controller-->
         <scene sceneID="Srs-BJ-n9L">
@@ -571,7 +571,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USF-9O-q4i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1679" y="-103"/>
+            <point key="canvasLocation" x="1787" y="667"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="PMV-zb-zTS">
@@ -603,10 +603,10 @@
             </objects>
             <point key="canvasLocation" x="1088" y="317.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Saved Recipes View Controller-->
         <scene sceneID="M97-UE-Dgj">
             <objects>
-                <viewController id="YVa-D3-iTU" sceneMemberID="viewController">
+                <viewController id="YVa-D3-iTU" customClass="SavedRecipesViewController" customModule="ChefNote" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7gL-XI-EQ3"/>
                         <viewControllerLayoutGuide type="bottom" id="GgH-Z2-Ibd"/>
@@ -673,6 +673,7 @@
                                             <outlet property="publisherLabel" destination="9xh-hX-znU" id="xJg-UN-xa6"/>
                                             <outlet property="recipeNameLabel" destination="CYq-mB-eSi" id="vtR-yD-y0G"/>
                                             <outlet property="totalTimeLabel" destination="on4-wu-ySw" id="iMq-es-wIh"/>
+                                            <segue destination="b43-He-PI3" kind="push" identifier="showRecipeDetailView" id="H3i-At-k9D"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -688,10 +689,13 @@
                             <constraint firstItem="RDt-N9-7nO" firstAttribute="top" secondItem="7gL-XI-EQ3" secondAttribute="bottom" constant="20" id="xvd-FS-5ek"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="IEj-QV-yTY" id="shg-vJ-Yrm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lii-Ig-NFx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1637" y="669"/>
+            <point key="canvasLocation" x="1801" y="-93"/>
         </scene>
     </scenes>
     <resources>
@@ -701,4 +705,7 @@
         <image name="More" width="32" height="32"/>
         <image name="fblogin" width="416" height="101"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="H3i-At-k9D"/>
+    </inferredMetricsTieBreakers>
 </document>

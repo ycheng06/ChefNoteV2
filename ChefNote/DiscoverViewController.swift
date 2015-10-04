@@ -24,7 +24,6 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
     private var imageCache:[String:UIImage] = [String:UIImage]()
     private var activityIndicatorContainer:UIView?
     
-    @IBOutlet weak var searchBarPlaceholder: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -205,12 +204,12 @@ class DiscoverViewController: UIViewController, UICollectionViewDataSource, UISe
             let query = PFQuery(className: "AllRecipe")
             query.whereKey("recipeIds", equalTo: recipeId)
             query.fromLocalDatastore()
-            query.findObjectsInBackgroundWithBlock{
-                (objects: [PFObject]?, error: NSError?) -> Void in
+            query.countObjectsInBackgroundWithBlock{
+                (count: Int32, error: NSError?) -> Void in
                 
                 if error == nil {
                     // recipe saved as favorite already
-                    if objects?.count > 0 {
+                    if count > 0 {
                         cell.saveButton.imageView?.image = UIImage(named: "Like-Filled.png")
                         cell.saveButtonCallback = nil
                     }
